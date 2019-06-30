@@ -1,7 +1,8 @@
+import java.time.Year;
 public class Persona{
     public String nombre;
     public String matricula;
-    public int edad;
+    public int edad = 0;
     public int fechaNacimiento;
 
     public Persona(){
@@ -19,6 +20,7 @@ public class Persona{
     }
     public void setFechaNacimiento(int fechaNacimiento){
         this.fechaNacimiento = fechaNacimiento;
+        calculoEdad(fechaNacimiento);
     }
 
     public String getNombre(){
@@ -33,4 +35,8 @@ public class Persona{
     public int getFechaNacimiento(){
         return fechaNacimiento;
     }
+
+    private void calculoEdad(int anio){
+        this.edad = Year.now().getValue() - anio;
+    }    
 }

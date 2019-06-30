@@ -19,6 +19,7 @@ public class Lista {
         Nodo nuevo = new Nodo(dato);
         if(head == null){
             head = nuevo;
+            this.tamanio ++;
         }else{
             Nodo aux = head;
             while(aux.getEnlace() != null ){
@@ -35,7 +36,7 @@ public class Lista {
             int i = 0;
             while(aux != null){
                 Persona aux2 = (Persona)aux.getDato();
-                System.out.print(i + ".[ Nombre: " + aux2.getNombre() +" Matricula: " + aux2.getMatricula() + " Edad: "+ aux2.getEdad() +" ] ");
+                System.out.print(i + ".[ Nombre:" + aux2.getNombre() +" Matricula:" + aux2.getMatricula() + " ] ");
                 aux = aux.getEnlace();
                 i++;
             }
@@ -43,6 +44,23 @@ public class Lista {
     }
     public Nodo getHead(){
         return head;
+    }
+
+    public Persona findById(String matricula){
+        Persona alumno = null;
+        if (!listaVacia()) {
+            Nodo aux = head;
+            while(aux != null){
+                Persona aux2 = (Persona)aux.getDato();
+                if(aux2.getMatricula().equals(matricula)){
+                    alumno = aux2;
+                    return alumno;
+                }else{
+                    aux = aux.getEnlace();
+                }
+            }
+        }
+            return alumno;
     }
 
 }
